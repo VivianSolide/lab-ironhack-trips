@@ -31,7 +31,7 @@ router.post('/my-trips/new', ensureLogin.ensureLoggedIn(), upload.single('photo'
     user_name: req.user.name,
     destination: req.body.destination,
     description: req.body.description,
-    pic_path: req.body.pic_path,
+    pic_path: `uploads/${req.file.filename}`,
   });
   trip.save(err => {
     res.redirect('/my-trips/new');
