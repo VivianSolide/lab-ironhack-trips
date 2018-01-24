@@ -12,8 +12,9 @@ var upload = multer({
   dest: './public/uploads/'
 });
 const passportRouter = require('./routes/passport');
-const user = require('./routes/users');
-const User = require("./models/user");
+const user = require("./routes/users");
+const User = require ('./models/user');
+
 const app = express();
 
 // Controllers
@@ -49,7 +50,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-app.use("/", user);
+app.use('/', user);
 app.use('/', passportRouter);
 
 //passport code here

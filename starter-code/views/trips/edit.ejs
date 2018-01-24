@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>
+    <%= trip.destination %>
+  </h1>
+  <h2>Actual</h2>
+  Destination : <%= trip.destination %><br> 
+  Description : <%= trip.description %>
+    <h2>Modifications</h2>
+    <form action="/my-trips/edit/<%= trip._id %>" method="post">
+      <label for="destination">Destination</label>
+      <input type="text" name="destination">
+      <br>
+      <label for="description">Description</label>
+      <input type="text" name="description">
+      <br>
+      <input type="submit" value="Update">
+    </form>
+</body>
+
+</html>

@@ -9,5 +9,23 @@
 <body>
   <h2>Submit your trip</h2>
   <a href="/my-trips/new">Link</a>
+  <h3>All your trips</h3>
+
+    <% trips.forEach((trip) => { %>
+      <li>
+        <%= trip.destination, %> <br>
+        Destination :  <%= trip.description %>  <br>
+        <img src="<%= trip.pic_path %>" alt=""> <br>
+        <a href="/my-trips/edit/<%= trip._id %>">
+          <button>Edit</button>
+        </a>
+
+        <form action="/my-trips/delete/<%= trip._id %>" method="get">
+            <button type="submit">Delete</button>
+        </form>
+        <br>
+      </li>
+    <% }) %>
+
 </body>
 </html>
