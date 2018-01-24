@@ -6,6 +6,11 @@ var bodyParser = require('body-parser');
 const session = require("express-session");
 const passport = require("passport");
 const FbStrategy = require('passport-facebook').Strategy;
+const ensureLogin = require("connect-ensure-login");
+const multer = require('multer');
+var upload = multer({
+  dest: './public/uploads/'
+});
 const passportRouter = require('./routes/passport');
 const user = require('./routes/users');
 const User = require("./models/user");
@@ -53,8 +58,12 @@ passport.serializeUser((user, cb) => {
 });
 
 passport.deserializeUser((id, cb) => {
-  User.findOne({ "_id": id }, (err, user) => {
-    if (err) { return cb(err); }
+  User.findOne({
+    "_id": id
+  }, (err, user) => {
+    if (err) {
+      return cb(err);
+    }
     cb(null, user);
   });
 });
